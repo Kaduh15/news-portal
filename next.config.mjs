@@ -10,6 +10,8 @@ const nextConfig = {
       'media-manager.noticiasaominuto.com',
       'assetsio.gnwcdn.com',
       'www.leak.pt',
+      'www.razaoautomovel.com',
+      'postal.pt',
     ],
   },
 }
