@@ -1,6 +1,6 @@
 import env from '@/env'
 
-import { Api, Article } from './api'
+import { Api, Article, urlImagesPermissions } from './api'
 
 export class GNewsApi implements Api {
   private baseUrl: string
@@ -21,6 +21,19 @@ export class GNewsApi implements Api {
     )
     const data = (await result.json()) as { articles: Article[] }
 
-    return data.articles
+    const articles = data.articles.map((article) => {
+      const image = urlImagesPermissions.some((url) => {
+        return article.image.includes(url)
+      })
+        ? article.image
+        : ''
+
+      return {
+        ...article,
+        image,
+      }
+    })
+
+    return articles
   }
 }

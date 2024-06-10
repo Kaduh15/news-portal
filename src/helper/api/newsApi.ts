@@ -1,27 +1,12 @@
 import env from '@/env'
 
-import { Api, Article } from './api'
+import { Api, Article, urlImagesPermissions } from './api'
 
 export class NewsApi implements Api {
   private baseUrl: string
 
   constructor() {
     this.baseUrl = 'https://newsapi.org/v2/'
-  }
-
-  async fetchImage(urlToImage: string): Promise<string | undefined> {
-    if (!urlToImage) return undefined
-
-    const urlImagem = `https://api.microlink.io?url=${urlToImage}`
-    const response = await fetch(urlImagem, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-    const data = await response.json()
-
-    return data.data.image.url
   }
 
   async getArticles(): Promise<Article[]> {
@@ -34,15 +19,21 @@ export class NewsApi implements Api {
         },
       },
     )
-    const data = await response.json()
+    const data = (await response.json()) as { articles: Article[] }
 
-    const articlesWithImages = await Promise.all(
-      data.articles.map(async (article: Article) => {
-        const image = await this.fetchImage(article.urlToImage)
-        return { ...article, image }
-      }),
-    )
+    const articles = data.articles.map((article) => {
+      const image = urlImagesPermissions.some((url) => {
+        return article.urlToImage && article.urlToImage.includes(url)
+      })
+        ? article.image
+        : ''
 
-    return articlesWithImages
+      return {
+        ...article,
+        image,
+      }
+    })
+
+    return articles
   }
 }
