@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Portal de Notícias - Desafio Técnico para Voluntariado na Tech Pro Bem
 
-## Getting Started
+🎉 Bem-vindo ao projeto desenvolvido para o desafio técnico da Tech Pro Bem! Este projeto consiste em um portal de notícias responsivo desenvolvido utilizando Next.js na versão 14, juntamente com os pacotes Shacd/UI, Tailwind CSS, Zod e Lucide React.
 
-First, run the development server:
+## Visão Geral
+O portal de notícias permite aos usuários visualizarem as últimas notícias de diferentes fontes, com a possibilidade de alternar entre a News API e a GNews API. A interface é responsiva e amigável ao usuário, fornecendo uma experiência de leitura agradável em qualquer dispositivo.
+
+## Tecnologias Utilizadas
+- Next.js 14: O framework React utilizado para o desenvolvimento do projeto.
+- Shacd/UI: Pacote de componentes UI para agilizar o desenvolvimento da interface.
+- Tailwind CSS: Framework de CSS utilizado para estilizar os componentes e garantir um design moderno e responsivo.
+- Zod: Biblioteca utilizada para validação de dados.
+- Lucide React: Conjunto de ícones SVG para melhorar a experiência visual do usuário.
+
+## Funcionalidades Implementadas
+- 📰 Consumo de API de Notícias: O portal consome as APIs de notícias (News API e GNews API) para obter as últimas informações.
+- 🔄 Seleção de Fonte de Notícias: Implementação de um seletor para alternar entre as fontes de notícias disponíveis.
+- 📝 Páginas de Detalhes: Redirecionamento para páginas de detalhes ao clicar em um card, exibindo o texto completo da notícia, data de publicação e autor.
+
+## Próximos Passos
+- 🛠️ Conclusão do Seletor de Fonte de Notícias: Finalizar a implementação do seletor para permitir uma alternância fácil entre a News API e a GNews API.
+- 🎨 Melhorias na Interface: Aprimorar o design e a usabilidade do portal, garantindo uma experiência de usuário ainda mais agradável.
+- 📄 Página de Detalhes: Implementação onde o usuário pode ver todos os detalhes da notícia.
+- ✅ Testes Unitários e de Integração: Implementar testes para garantir a qualidade e robustez do código.
+- 📖 Documentação: Elaborar uma documentação detalhada do projeto, incluindo instruções para execução local e contribuição.
+
+
+## Como Executar o Projeto Localmente
+
+##### Pré-requisitos
+Você precisa ter o Node.js instalado na sua máquina. Caso não tenha, acesse https://nodejs.org/en para instalar.
+
+ 1. Clone o repositório:
+
+```bash
+git clone https:github.com/kaduh15/news-portal
+```
+
+2. Entre na pasta do projeto:
+```bash
+cd news-portal
+```
+
+3. Instale as dependências:
+```bash
+npm install
+```
+
+4. Obtenha sua chave de acesso da api:
+
+  - Acesse https://gnews.io/ ou https://newsapi.org/.
+  - Após criar sua conta, você receberá sua chave de acesso.
+  - Renomeie o arquivo .env.example que está na raiz do projeto para .env e insira sua chave de acesso obtida.
+    - Se criou uma conta na GNews, cole sua chave onde está indicado GNEWS_KEY.
+    - Se criou uma conta na News API, cole sua chave onde está indicado NEWS_KEY.
+
+5. Inicie o servidor de desenvolvimento:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+6. Acesse o projeto:
+```
+Abra o navegador e acesse http://localhost:3000.
+```
