@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useRouter, usePathname } from 'next/navigation'
 
 import {
   Select,
@@ -9,14 +9,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { Apis } from '@/helper/api'
 
 export default function SelectApi() {
-  const [selectedApi, setSelectedApi] = useState<Apis>('gnews')
-  console.log('🚀 ~ SelectApi ~ selectedApi:', selectedApi)
+  const pathname = usePathname()
+  const router = useRouter()
 
   const handleSelectChange = (value: string) => {
-    setSelectedApi(value as Apis)
+    router.replace(`${pathname}?api=${value}`)
   }
 
   return (

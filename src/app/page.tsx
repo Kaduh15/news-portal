@@ -1,11 +1,14 @@
 import Article from '@/components/Article'
+import SelectApi from '@/components/SelectApi'
 import { ModeToggle } from '@/components/ui/mode-toggle'
-import { createApi } from '@/helper/api'
+import { Apis, createApi } from '@/helper/api'
 
-export default async function Home() {
-  const api = await createApi('news')
+type HomeProps = { searchParams?: { api?: Apis } }
 
-  const result = await api.getArticles()
+export default async function Home({ searchParams }: HomeProps) {
+  const apiSelect = await createApi(searchParams?.api || 'gnews')
+
+  const result = await apiSelect.getArticles()
 
   return (
     <>
@@ -14,10 +17,15 @@ export default async function Home() {
         <ModeToggle />
       </header>
 
-      <main className="mt-8 flex flex-wrap justify-evenly gap-x-5 px-5">
-        {result.map((news) => {
-          return <Article key={news.url} {...news} />
-        })}
+      <main className="flex flex-col p-5">
+        <div className="self-end">
+          <SelectApi />
+        </div>
+        <div className="flex flex-wrap justify-evenly gap-x-5">
+          {result.map((news) => {
+            return <Article key={news.url} {...news} />
+          })}
+        </div>
       </main>
     </>
   )
